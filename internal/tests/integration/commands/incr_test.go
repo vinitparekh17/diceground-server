@@ -30,11 +30,11 @@ func TestIncr(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{Expected: "(integer) 1"},
-				{Expected: "(integer) 2"},
-				{Expected: "(integer) 1"},
-				{Expected: "(integer) 2"},
-				{Expected: "(integer) 1"},
+				{Expected: "1"},
+				{Expected: "2"},
+				{Expected: "1"},
+				{Expected: "2"},
+				{Expected: "1"},
 			},
 		},
 		{
@@ -46,8 +46,8 @@ func TestIncr(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{Expected: "(integer) " + strconv.FormatInt(math.MinInt64+1, 10)},
-				{Expected: "(integer) " + strconv.FormatInt(math.MinInt64+2, 10)},
+				{Expected: strconv.FormatInt(math.MinInt64+1, 10)},
+				{Expected: strconv.FormatInt(math.MinInt64+2, 10)},
 			},
 		},
 		{
@@ -58,9 +58,9 @@ func TestIncr(t *testing.T) {
 				{Command: "INCR", Body: []string{"non_existent"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(integer) 1"},
-				{Expected: "(integer) 1"},
-				{Expected: "(integer) 2"},
+				{Expected: "1"},
+				{Expected: "1"},
+				{Expected: "2"},
 			},
 		},
 		{
@@ -75,11 +75,11 @@ func TestIncr(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{Expected: "(integer) 43"},
+				{Expected: "43"},
 				{Expected: "OK"},
-				{Expected: "(integer) -9"},
+				{Expected: "-9"},
 				{Expected: "OK"},
-				{Expected: "(integer) 1"},
+				{Expected: "1"},
 			},
 		},
 		{
@@ -92,8 +92,8 @@ func TestIncr(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{Expected: "(integer) 1"},
-				{Expected: "(integer) 2"},
+				{Expected: "1"},
+				{Expected: "2"},
 				{Expected: "(nil)"},
 			},
 			Delays: []time.Duration{0, 0, 0, 2 * time.Second},
@@ -110,11 +110,11 @@ func TestIncr(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{ErrorExpected: true, Expected: "(error) ERR WRONGTYPE Operation against a key holding the wrong kind of value"},
+				{ErrorExpected: true, Expected: "ERR WRONGTYPE Operation against a key holding the wrong kind of value"},
 				{Expected: "OK"},
-				{ErrorExpected: true, Expected: "(error) ERR WRONGTYPE Operation against a key holding the wrong kind of value"},
+				{ErrorExpected: true, Expected: "ERR WRONGTYPE Operation against a key holding the wrong kind of value"},
 				{Expected: "OK"},
-				{ErrorExpected: true, Expected: "(error) ERR WRONGTYPE Operation against a key holding the wrong kind of value"},
+				{ErrorExpected: true, Expected: "ERR WRONGTYPE Operation against a key holding the wrong kind of value"},
 			},
 		},
 	}

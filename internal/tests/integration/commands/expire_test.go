@@ -23,7 +23,7 @@ func TestExpire(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{Expected: "(integer) 1"},
+				{Expected: "1"},
 			},
 		},
 		{
@@ -35,8 +35,8 @@ func TestExpire(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{Expected: "(integer) 1"},
-				{Expected: "\"SomeValue\""},
+				{Expected: "1"},
+				{Expected: "SomeValue"},
 			},
 		},
 		{
@@ -48,7 +48,7 @@ func TestExpire(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{Expected: "(integer) 1"},
+				{Expected: "1"},
 				{Expected: "(nil)"}, // Expecting (nil) after waiting
 			},
 		},
@@ -58,7 +58,7 @@ func TestExpire(t *testing.T) {
 				{Command: "EXPIRE", Body: []string{"non_existent_key", "1"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(integer) 0"},
+				{Expected: "0"},
 			},
 		},
 		{
@@ -69,7 +69,7 @@ func TestExpire(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{ErrorExpected: true, Expected: "(error) ERR Unsupported option extra_argument"},
+				{ErrorExpected: true, Expected: "ERR Unsupported option extra_argument"},
 			},
 		},
 	}

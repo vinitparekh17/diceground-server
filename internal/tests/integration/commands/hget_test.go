@@ -30,8 +30,8 @@ func TestHGet(t *testing.T) {
 				{Command: "HGET", Body: []string{"user", "name"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(integer) 2"},
-				{Expected: "\"John Doe\""},
+				{Expected: "2"},
+				{Expected: "John Doe"},
 			},
 		},
 		{
@@ -41,7 +41,7 @@ func TestHGet(t *testing.T) {
 				{Command: "HGET", Body: []string{"user1", "gender"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(integer) 2"},
+				{Expected: "2"},
 				{Expected: "(nil)"},
 			},
 		},
@@ -53,7 +53,7 @@ func TestHGet(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{ErrorExpected: true, Expected: "(error) WRONGTYPE Operation against a key holding the wrong kind of value"},
+				{ErrorExpected: true, Expected: "WRONGTYPE Operation against a key holding the wrong kind of value"},
 			},
 		},
 		{
@@ -62,7 +62,7 @@ func TestHGet(t *testing.T) {
 				{Command: "HGET", Body: []string{"user2", "name", "age"}},
 			},
 			Result: []TestCaseResult{
-				{ErrorExpected: true, Expected: "(error) ERR wrong number of arguments for 'hget' command"},
+				{ErrorExpected: true, Expected: "ERR wrong number of arguments for 'hget' command"},
 			},
 		},
 	}

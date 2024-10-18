@@ -18,7 +18,7 @@ func TestHSet(t *testing.T) {
 				{Command: "HSET", Body: []string{"user", "name", "John Doe", "age", "30"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(integer) 2"},
+				{Expected: "2"},
 			},
 		},
 		{
@@ -28,8 +28,8 @@ func TestHSet(t *testing.T) {
 				{Command: "HSET", Body: []string{"user1", "name", "John Loe", "gender", "Male"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(integer) 2"},
-				{Expected: "(integer) 1"},
+				{Expected: "2"},
+				{Expected: "1"},
 			},
 		},
 		{
@@ -38,7 +38,7 @@ func TestHSet(t *testing.T) {
 				{Command: "HSET", Body: []string{"user", "name", "John Loe", "gender"}},
 			},
 			Result: []TestCaseResult{
-				{ErrorExpected: true, Expected: "(error) ERR wrong number of arguments for 'HSET' command"},
+				{ErrorExpected: true, Expected: "ERR wrong number of arguments for 'HSET' command"},
 			},
 		},
 		{
@@ -49,7 +49,7 @@ func TestHSet(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{ErrorExpected: true, Expected: "(error) WRONGTYPE Operation against a key holding the wrong kind of value"},
+				{ErrorExpected: true, Expected: "WRONGTYPE Operation against a key holding the wrong kind of value"},
 			},
 		},
 	}

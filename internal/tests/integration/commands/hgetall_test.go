@@ -20,7 +20,7 @@ func TestHGetAll(t *testing.T) {
 				{Command: "HGETALL", Body: []string{"user"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(empty list or set)"},
+				{Expected: ""},
 			},
 		},
 		{
@@ -30,7 +30,7 @@ func TestHGetAll(t *testing.T) {
 				{Command: "HGETALL", Body: []string{"user"}},
 			},
 			Result: []TestCaseResult{
-				{Expected: "(integer) 1"},
+				{Expected: "1"},
 				{Expected: "1) name\n   John Doe\n"},
 			},
 		},
@@ -42,7 +42,7 @@ func TestHGetAll(t *testing.T) {
 			},
 			Result: []TestCaseResult{
 				{Expected: "OK"},
-				{ErrorExpected: true, Expected: "(error) WRONGTYPE Operation against a key holding the wrong kind of value"},
+				{ErrorExpected: true, Expected: "WRONGTYPE Operation against a key holding the wrong kind of value"},
 			},
 		},
 		{
@@ -51,7 +51,7 @@ func TestHGetAll(t *testing.T) {
 				{Command: "HGETALL", Body: []string{"user", "name"}},
 			},
 			Result: []TestCaseResult{
-				{ErrorExpected: true, Expected: "(error) ERR wrong number of arguments for 'hgetall' command"},
+				{ErrorExpected: true, Expected: "ERR wrong number of arguments for 'hgetall' command"},
 			},
 		},
 	}
